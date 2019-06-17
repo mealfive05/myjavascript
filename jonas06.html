@@ -1,0 +1,42 @@
+<script>
+
+let a=123;
+document.write(typeof(a)+"<br>");
+a=String(a);
+document.write(typeof(a)+":"+a+"<br>");
+
+let b= true;
+document.write(typeof(b)+"<br>");
+a=String(a);
+document.write(typeof(b)+":"+b+"<br>");
+
+let c ='123';
+document.write(typeof(c)+"<br>");
+c = Number(c);
+document.write(typeof(c)+":"+c+"<br>");
+
+
+// let x =11 ,y=10;
+let x= parseInt(Math.random()*12)+1;
+document.write(x+"month ");
+switch (x){
+    case 1: case 3: case 5: case 7: case 8: case 10: case 12: 
+        document.write("31");
+        break;
+    case 2:
+        document.write("28");
+        break;
+    
+    case 4: case 6: case 9: case 11:
+        document.write("30");
+        break;
+
+        document.write("game over");
+
+
+
+
+}
+
+
+</script>

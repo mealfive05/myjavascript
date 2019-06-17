@@ -1,0 +1,38 @@
+<script>
+    let p =[0,0,0,0,0,0,0];
+    
+    // let p1, p2, p3, p4, p5, p6;
+    // p1 = p2 = p3 = p4 = p5 = p6 = 0;
+    for (let i = 1; i <= 1000; i++) {
+        let x = parseInt(Math.random() * 9) + 1;
+        p[x<=6?x:x-3]++;
+        }
+
+    for(let i=1; i<p.length; i++){
+        document.write(`${i}: ${p[i]}<br>`);
+    //     switch (x % 6) {
+
+    //         case 1:
+    //             p1++;
+    //             break
+    //         case 2:
+    //             p2++;
+    //             break
+    //         case 3:
+    //             p3++;
+    //             break
+    //         case 4:
+    //             p4++;
+    //             break
+    //         case 5:
+    //             p5++;
+    //             break
+    //         case 0:
+    //             p6++;
+    //             break
+    //     }
+     }
+    // document.write("p1:"+p1+"<br>"+"p2:"+p2+"<br>"+"p3:"
+    // +p3+"<br>"+"p4:"+p4+"<br>"+"p5:"+p5+"<br>"+"p6:"+p6+"<br>");
+
+</script>

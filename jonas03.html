@@ -1,0 +1,26 @@
+<script>
+    
+    // let score = prompt("請輸入成績",);
+    let score = Math.round(Math.random()*101); //賦予它生命意義，不能是湊數字湊出來的
+    
+    document.write(score);
+    if(score>=90){
+    document.write("A");
+    }else if(score>=80 && score<90){
+        document.write("B");
+    }else if(score>=70 && score<80){
+        document.write("C");
+        score = 50;
+    }else if(score>=60 && score<70){
+        document.write("D");
+    }else{
+        document.write("E");
+    }
+
+    // switch(score){
+    //     case '90'
+    // }
+    function getRandom(min,max){
+    return Math.floor(Math.random()*(max-min+1))+min;
+};
+</script>

@@ -1,0 +1,25 @@
+<input type="text" id="year">
+<input type="button" onclick="rr()" value="是否為閏年">
+<div id="result"></div>
+<script>
+// let year = prompt("請輸入年分",);
+function rr(){
+let year=document.getElementById("year").value;
+let isOK= false;
+if(year%4==0){
+    if(year%100==0){
+        if(year%400==0){
+            isOK= true;
+        }else{
+            isOK= false;
+        }
+    }
+    else{
+        isOK= true;
+    }
+}else{
+    isOK= false;
+}
+document.getElementById('result').innerHTML= isOK?'閏年':'平年';
+}
+</script>
