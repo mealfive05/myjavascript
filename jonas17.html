@@ -1,0 +1,58 @@
+<script src="jonasapis.js"></script>
+<script>
+    let num = document.getElementById('num');
+    let answer = createAnswer(num);
+    let log ='';
+    let times =0;
+    console.log(answer);
+    
+    
+    function doGuess(){
+        times++;
+        let guessElement =document.getElementById('guess');
+        // answer = createAnswer(5);
+        // alert(answer);
+        let guess = guessElement.value;
+        let result = checkAB(answer,guess);
+    
+        log+= times+"."+ guess+"=>"+result+"<br>";
+        document.getElementById('log').innerHTML=log;
+        guessElement.value='';
+        guessElement.focus();
+
+        if(result == 3 +'A0B'){
+            alert('Winner');
+            reset();
+        }else if(times == 3){
+            alert('Loser:answer is ' + answer);
+            reset();
+        }else{
+            alert(result);
+        }
+    }
+
+    function reset(){
+        if(!confirm('Reset?')) return;
+        answer = createAnswer(3);
+        times=0;
+        log='';
+        document.getElementById('log').innerHTML=log;
+        document.getElementById('guess').value='';
+        document.getElementById('guess').focus()
+    }
+</script>
+
+
+<h1>Guess Number Game</h1>
+<hr>
+<input type="number" id="guess">
+<input type="button" value="Guess" onclick="doGuess()">
+<input type="button" value="Reset" onclick="reset()">
+<select id="num">
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+</select>
+<hr>
+<div id='log'></div>

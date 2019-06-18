@@ -1,25 +1,10 @@
 <script>
-    let poker = [];
-    let flag = 0;
 
-    for (let i = 0; i < 52; i++) {
-        let rand = parseInt(Math.random() * 52);
-        if (flag = 0) {
-            for (let j = 0; j < i; j++) {
-                if (poker[i] == rand) {
-                    flag = 1;
-                }
-            }
-            poker[i] = rand;
-        }else {
-            for (let j = 0; j < i; j++) {
-                if (poker[i] == rand) {
-                    flag = 1;
-                }
-            }
-        }
-    }
-    for (let i in poker) {
-        document.write(poker[i] + "<br>");
-    }
+let a = [0,1,2,3,4,5];
+a[23]=23;
+for(let i=0;i<a.length;i++) document.write(a[i] +"<br>");
+document.write("<hr>");
+for (let i in a) document.write(a[i] +"<br>");
+document.write("<hr>");
+for(let v of a) document.write(v+"<br>");
 </script>

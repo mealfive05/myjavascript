@@ -1,0 +1,32 @@
+<script src="jonasapis.js"></script>
+<script>
+
+//     let id ='11,22,33,423524,55234234';
+//      let regex = /^[A-Z][12][0-9]{8}$/;  //暴力搜尋法
+//     let regex = /[0-9]{1,5}/g;
+
+//     let result = id.match(regex);
+//     if(result==null){
+//         document.write("none");
+//     }else{
+//     for (let v of result){
+//         document.write(v+"<br>");
+//     }
+// }
+    
+
+
+    function ckId(){
+        let id = document.getElementById('id').value;
+        let isRight = checkTWId(id);
+        if(!isRight){
+            alert('xx');
+        }else{
+            alert('ok');
+        }
+        
+    }
+
+</script>
+<input type="text" id="id">
+<input type="button" value="check" onclick="ckId()">
