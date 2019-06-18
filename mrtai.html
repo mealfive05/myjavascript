@@ -1,30 +1,72 @@
 <style>
-    td{
-        
+    #result0{
+         text-align: center; 
+         font-size: 50px;
+        color: aqua; 
     }
-    table{
-        table-layout : fixed;
+
+    table {
+        table-layout: fixed;
     }
 </style>
 <script>
-    let i=1;
-    function one(){
-        setInterval(cir,200);
+    let i = 1;
+    let space = 0;
+    let ini;
+    let flag =0;
+    let isStop=0;
+    function startloop() {
+        ini=setInterval(cir, 400);
+        setTimeout(stoploop,2000);
     }
-    function cir(){
-        if(i/24>1){
-            document.getElementById(i-24).style.border= "solid";
-            i++
+    function cir() {
+            if (i > 24) {
+
+                i = i - 24;
+                document.getElementById(24).style.border = "";
+            }
+            document.getElementById(i - 1).style.border = "";
+            document.getElementById(i).style.border = "solid";
+            i++;
+            // console.log(i);
+            // space++;
+            // return space;
+        }
+
+
+    function stoploop() {
+        if(flag==0){
+         clearInterval(ini);
+         ini=setInterval(cir, 50);
+         flag=1;
+        }else{
+            clearInterval(ini);
+            if(isStop==0){
+                
+            ini=setInterval(cir, 400);
+            setTimeout(stoploop,2000);
+            isStop=1;
+            }else{
+                clearInterval(ini);
+                isStop=0;
+                flag=0;
+                count_result();
+            }
             
         }
-        document.getElementById(i).style.backgroundColor= '#448ECC';
-        i++
         
-    
+        //  setTimeout(stoploop,1600);
+        
     }
-function stoploop(){
-    
-}
+
+    function count_result(){
+        document.getElementById('result0').innerHTML= i-1;
+        let result0=document.getElementById('result0');
+        let input0=document.getElementById('a');
+        if(result0>input0){
+            alert('猜中了');
+        }
+    };
 
 </script>
 
@@ -42,23 +84,23 @@ function stoploop(){
     </tr>
     <tr>
         <td id="24">24</td>
-        <td colspan="5" rowspan="5" id="0">0</td>
+        <td colspan="5" rowspan="5" id="result0">0</td>
         <td id="8">8</td>
     </tr>
     <tr>
         <td id="23">23</td>
         <td id="9">9</td>
-        
+
     </tr>
     <tr>
         <td id="22">22</td>
         <td id="10">10</td>
-        
+
     </tr>
     <tr>
         <td id="21">21</td>
         <td id="11">11</td>
-        
+
     </tr>
     <tr>
         <td id="20">20</td>
@@ -86,5 +128,12 @@ function stoploop(){
         </script> -->
 
 </table>
-<input type="button" value="Start" onclick="one()">
+<div>
+<input type="button" value="Start" onclick="startloop()">
 <input type="button" value="Stoploop" onclick="stoploop()">
+</div>
+
+<input type="text" size=2 id="a">
+<input type="text" size=2 id="b">
+<input type="text" size=2 id="c">
+<div id="0"></div>
