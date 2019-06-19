@@ -1,14 +1,34 @@
 <table border="1" width="100%">
     <script>
-        for (let j= 1; j<=10; j++ ) {
+        let flag=0;
+        let question =(prompt("想要查詢多少數字以內的所有質數:")/10);
+        for (let j= 1; j<=question; j++ ) {
             
             document.write("<tr>");
             for (let i = 1; i <= 10; i++) {
                 let newi= i+ 10*(j-1);
+                Prime(newi);
+                if(flag==1||newi==1){
                 document.write("<td>" + newi  +"</td>");
+                }else{
+                    document.write("<td bgcolor=red>" + newi  +"</td>");
+                }
             }
             document.write("</tr>");
         }
+        function Prime(pm){
+            let sqr=Math.floor(Math.sqrt(pm));
+            for(sqr;sqr>1;sqr--){
+                if(pm%sqr==0){
+                    flag=1;
+                    break;
+                }else{
+                    flag=0;
+                }
+            }
+            
+        }
+        Prime(100);
     </script>
 
 </table>
