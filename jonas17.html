@@ -1,7 +1,8 @@
 <script src="jonasapis.js"></script>
 <script>
-    let num = document.getElementById('num');
-    let answer = createAnswer(num);
+    let exe = document.getElementById('sele');
+    console.log(exe);
+    let answer = createAnswer();
     let log ='';
     let times =0;
     console.log(answer);
@@ -10,8 +11,9 @@
     function doGuess(){
         times++;
         let guessElement =document.getElementById('guess');
-        // answer = createAnswer(5);
+        // answer = createAnswer(3);
         // alert(answer);
+        // console.log(answer);
         let guess = guessElement.value;
         let result = checkAB(answer,guess);
     
@@ -48,11 +50,11 @@
 <input type="number" id="guess">
 <input type="button" value="Guess" onclick="doGuess()">
 <input type="button" value="Reset" onclick="reset()">
-<select id="num">
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-    <option>6</option>
+<select id="sele">
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
 </select>
 <hr>
 <div id='log'></div>

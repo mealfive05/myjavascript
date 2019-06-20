@@ -1,0 +1,27 @@
+<script>
+function test1(){
+    let n =parseInt(Math.random()*101);
+    document.write(n+"<br>");
+    try{
+    test2(n);
+    document.write("every thing is ok<br>");
+    }catch(e){
+        document.write('not much'); //這裡就是處理 處理完繼續跑程式
+        return;
+    }finally{
+        document.write('finally'); //最後一定會做 就算catch中return
+    }
+    document.write("test here");
+}
+
+
+    function test2(a){
+        if(a>=60){
+            document.write("test2,ok<br>");
+        }else{
+            throw "Oops!";
+        }
+    }
+
+</script>
+<input type="button" value="test" onclick="test1()">

@@ -1,0 +1,99 @@
+<script src="jonasapis.js"></script>
+<canvas id = 'canvas' width="1200" height="628" style="border: 1px solid black"></canvas>
+<input type="button" onclick="go()" value="GO">
+<script>
+    let ctx = canvas.getContext('2d');
+    // let ballX = 10,ballY=10;
+    // let dx=8,dy=8;
+
+    let bg = new Image();
+    bg.src = 'bg.jpg'; 
+    let balls=[];
+    
+    let ball1 = new Image();
+    let ball2 = new Image();
+    let ball3 = new Image();
+    ballImg=[ball1,ball2,ball3];
+    let ballObj={
+        x:0,
+        y:0,
+        dx:32,
+        dy:32,
+        img:0
+    };
+ 
+
+    bg.onload = function(){
+        ctx.drawImage(bg, 0,0);
+        ball1.src='ball.png';
+        ball2.src='ball1.png';
+        ball3.src='ball2.png';
+        // ball.onload=function(){
+        //     ctx.drawImage(ball, ballX,ballY);
+        // }
+    }
+
+
+
+    
+    function refreshView(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.drawImage(bg, 0,0);
+
+        for(let i=0;i<balls.length;i++){
+            
+            ctx.drawImage(ballImg[balls[i].img], balls[i].x,balls[i].y);
+        }
+        
+        
+        
+       
+    }
+
+    function go(){
+        for(let i =0 ; i<balls.length;i++){
+            moveBall(balls[i]);
+        }
+        // if(ballX<0||ballX+300>canvas.width){
+        //     dx*=-1;
+        // }
+        // if(ballY<0||ballY+300>canvas.height){
+        //     dy*=-1;
+        // }
+        // ballX+=dx;
+        // ballY+=dy;
+    }
+
+    canvas.onmousedown = function(e){
+        let ballObject = clone(ballObj);
+        ballObject.x=e.offsetX;
+        ballObject.y=e.offsetY;
+        ballObject.img=parseInt(Math.random()*3);
+        // ballObject.dx=8;
+        // ballObject.dy=8;
+    //     let ballObj={
+    //     x:e.offsetX-12,
+    //     y:e.offsetY-12,
+    //     dx:8,
+    //     dy:8,
+    //     img:parseInt(Math.random()*3)
+    // };
+    balls[balls.length]=ballObject;
+    }
+
+    function moveBall(obj){
+        if(obj.x<0||obj.x+24>canvas.width){
+            obj.dx*=-1;
+        }
+        if(obj.y<0||obj.y+24>canvas.height){
+            obj.dy*=-1;
+        }
+        obj.x+=obj.dx;
+        obj.y+=obj.dy;
+    }
+    setInterval(refreshView,30);
+    setInterval(go,60);
+   
+
+
+</script>

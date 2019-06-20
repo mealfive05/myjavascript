@@ -67,3 +67,12 @@ function checkAB(ans,gus){
     let AB=a+'A'+b+'B';
     return AB;
 }
+
+function clone(source){
+    if(typeof(source)!='object')return null;
+    let obj1 = new Object();
+    for(let attr in source){
+        obj1[attr]=source[attr];
+    }
+    return obj1;
+}
