@@ -1,0 +1,53 @@
+<script>
+var d= new Date(2019,1,10);
+console.log(d);
+class bike{
+    constructor(speed){
+        console.log("new bike");
+        this.speed = speed;
+        this.name = '';
+    }
+    upSpeed(){
+        this.speed+=1.2;
+    }
+
+    static m1(){
+    console.log("bike:m1()");
+}
+}
+
+let b1 = new bike(12);
+console.log(b1.speed);
+console.log(b1.name);
+
+class Scooter extends bike{
+    constructor(speed,gear){
+        console.log("new Scooter")
+        super(speed);
+        this.speed = speed;
+        this.gear = gear;
+    }
+
+setGear(gear){
+    this.gear=gear;
+}
+upSpeed(){
+        this.speed= this.speed*(this.gear+1.2);
+    }
+
+}
+
+
+
+let b2 = new bike(12);
+console.log(b2.speed);
+console.log(b2.name);
+
+let s1= new Scooter(12,12);
+console.log(s1.speed);
+console.log(s1.name);
+
+bike.m1();
+Scooter.m1();
+
+</script>

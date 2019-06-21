@@ -72,7 +72,25 @@ function clone(source){
     if(typeof(source)!='object')return null;
     let obj1 = new Object();
     for(let attr in source){
-        obj1[attr]=source[attr];
+        if(typeof(source[attr])=='object'){  //若你物件裡面還有物件
+            obj1[attr]= clone(source[attr]);
+        }else{
+        obj1[attr]=source[attr];  
+        }
     }
     return obj1;
+}
+
+
+Date.prototype.getCWeek = function(){
+    let w = this.getDay();
+    let ws =['星期天','星期一','星期二','星期三','星期四','星期五','星期六'];
+    return ws[w];
+}
+
+Date.prototype.getTWyear = function(){
+    let w = '民國'+ (this.getFullYear()-1911)+'年';
+
+    
+    return w;
 }

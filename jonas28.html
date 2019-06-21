@@ -1,0 +1,13 @@
+<script>
+    let f= function(){
+        this.a=1;
+        this.b=2;
+    }
+    let obj = new f();
+    console.log(obj.a+":"+obj.b);
+
+    f.prototype.b=3; //會印出2 原型屬性會被蓋掉
+    f.prototype.c=4;
+
+    
+</script>

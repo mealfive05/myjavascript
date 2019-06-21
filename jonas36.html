@@ -1,0 +1,15 @@
+<script>
+        let xhttp = new XMLHttpRequest();
+        
+        function callback(){
+            console.log("back ok");
+        }
+        function sendTest(){
+            xhttp.onreadystatechange = callback;
+            xhttp.open("GET", "jonas.php",true);
+            xhttp.send();
+        }
+    </script>
+    <h1>brad big company</h1>
+    <hr>
+    <input type="button" value="click me" onclick="sendTest()">

@@ -1,19 +1,81 @@
-<script src="jonasapis.js"></script>
+
+
+
+
+
+
+<body>
+
+        <h1>Guess Number Game</h1>
+        <hr>
+        <input type="number" id="guess">
+        <input type="button" value="Guess" onclick="doGuess()">
+        <input type="button" value="Reset" onclick="reset()">
+        <select id="sele" onchange="sel_val()">
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+        <hr>
+        <div id='log'></div>
+
+
+
 <script>
-    let exe = document.getElementById('sele');
-    console.log(exe);
-    let answer = createAnswer();
+    let exe = document.getElementById('sele').value;
+    let answer = createAnswer(exe);
     let log ='';
     let times =0;
-    console.log(answer);
     
+    let flag =0;
     
+    function sel_val(){
+        exe = document.getElementById('sele').value;
+        answer = createAnswer(exe);
+        console.log(answer);
+    }
+
+    function createAnswer(n = 3){
+    let poker = []; 
+    for (let i = 0; i < 10; i++) 
+        poker[i] = i; 
+    
+    for (let i = poker.length - 1; i > 0; i--) {   
+        let rand = parseInt(Math.random() * (i + 1));
+        [poker[i],poker[rand]] = [poker[rand],poker[i]];
+        // [a,b] = [b,a]; js特有的交換
+    }
+    let ret ='';
+    for(let i=0; i<n ;i++){
+        ret += poker[i];
+    }
+    return ret;
+}
+
+function checkAB(ans,gus){
+    let a=0,b=0;
+    for(let i=0;i<gus.length; i++){
+        if(gus.charAt(i)==ans.charAt(i)){    //gus[中的第i碼]==ans中的第i碼
+            a++;
+        }else if(ans.indexOf(gus.charAt(i))>=0){  //gus中的第i碼是否存在於ans中
+            b++;
+        }
+    }
+    let AB=a+'A'+b+'B';
+    return AB;
+}
+
+
+
+
     function doGuess(){
+        
         times++;
         let guessElement =document.getElementById('guess');
         // answer = createAnswer(3);
         // alert(answer);
-        // console.log(answer);
+        console.log(answer);
         let guess = guessElement.value;
         let result = checkAB(answer,guess);
     
@@ -24,37 +86,34 @@
 
         if(result == 3 +'A0B'){
             alert('Winner');
+            flag=1;
             reset();
         }else if(times == 3){
             alert('Loser:answer is ' + answer);
+            flag=1;
             reset();
         }else{
             alert(result);
         }
+        console.log(flag);
     }
 
     function reset(){
+        if(flag==0){
         if(!confirm('Reset?')) return;
+        }
         answer = createAnswer(3);
+        console.log(answer)
         times=0;
         log='';
         document.getElementById('log').innerHTML=log;
         document.getElementById('guess').value='';
         document.getElementById('guess').focus()
+        flag=0;
     }
 </script>
 
 
-<h1>Guess Number Game</h1>
-<hr>
-<input type="number" id="guess">
-<input type="button" value="Guess" onclick="doGuess()">
-<input type="button" value="Reset" onclick="reset()">
-<select id="sele">
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-</select>
-<hr>
-<div id='log'></div>
+
+    
+</body>
